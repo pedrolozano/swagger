@@ -1,0 +1,126 @@
+swagger: '2.0' 
+info: 
+  version: '1.0' 
+  description: This API look up information about customers. 
+  title: Api Customers GFT 
+  x-ibm-name: api-customers-gft 
+  schemes: 
+    - https 
+  host: $(catalog.host) 
+  basePath: /customers 
+  produces: 
+    - text/plain; charset=utf-8 
+  consumes: 
+    - application/json 
+  tags: 
+    - name: customer 
+  paths: 
+    /: 
+      get: 
+        tags: 
+          - customer 
+        summary: Lookup a list of customers according to the apply filter.
+        parameters: 
+          - in: query 
+            name: customer_id 
+            description: Customer ID 
+            required: false 
+            type: string 
+          - in: query 
+            name: document_number 
+            description: Document number 
+            required: false 
+            type: string 
+          - in: query company_name
+            description: 
+            Company name required: false 
+            type: string 
+          - in: query 
+            name: account_number 
+            description: Company name 
+            required: false 
+            type: string 
+          - in: query 
+            name: name 
+            description: Name 
+            required: false 
+            type: string 
+          - in: query 
+            name: paternal_name 
+            description: Paternal Name 
+            required: false 
+            type: string 
+          - in: query 
+            name: maternal_name 
+            description: Maternal Name 
+            required: false 
+            type: string 
+          - in: header 
+            name: accept 
+            description: Mime type request expected 
+            required: true 
+            type: string 
+          - in: header 
+            name: accept-language 
+            description: Language expected 
+            required: true 
+            type: string 
+          - in: header }
+            name: content-type 
+            description: Mime type request expected 
+            required: true 
+            type: string 
+          - in: header 
+            name: x-ibm-client-id 
+            description: IBM client ID 
+            required: true 
+            type: string 
+          - in: header 
+            name: authorization 
+            description: Token authorization 
+            required: true 
+            type: string 
+          - in: header 
+            name: x-santander-global-id 
+            description: Santander global ID 
+            required: true 
+            type: string 
+        responses: 
+        '200':
+          description: successful operation 
+          schema: 
+            $ref: '#/definitions/customersData'
+        '404': 
+          description: customer not found. 
+        '500': 
+          description: Unexpected error. 
+        
+definitions: 
+  customersData: 
+    type: array 
+    items: 
+      $ref: '#/definitions/customerDetail' 
+  customerDetail: 
+    type: object 
+    properties: 
+      customerId: 
+        type: string 
+        example: "00021244" 
+      originChannel: 
+        type: string 
+        example: "BANCA SERFIN" 
+      fullName: 
+        type: string 
+        example: "ACEVES GONZALEZ ADOLFO" 
+      condition: 
+        type: string 
+        example: "CLIENTE" 
+      segment: 
+        type: string 
+        example: "PREMIER" 
+      address: 
+        type: string 
+        example: "LOMA BONITA 1839" 
+      customerCategory: 
+        type: string
+        example: "FISICA"
