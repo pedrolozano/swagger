@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: v1client
+Implementation-Version: 1.0.0
+Built-By: viexfjr
+Implementation-Vendor-Id: com.example.v1
+Build-Jdk: 1.8.0_201
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
